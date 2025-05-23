@@ -11,7 +11,7 @@ import Scheduling from './components/Scheduling';
 import BlogPage from "./components/pages/BlogPage";
 import AboutPage from "./components/pages/AboutPage";
 import TeamPage from './components/pages/TeamPage';
-
+import ContactPage from './components/pages/ContactPage';
 
 import './App.css';
 
@@ -53,6 +53,7 @@ function App() {
                 <CallToAction />
               </>
             } />
+            <Route path="/contato" element={<ContactPage />} />mail
             <Route path="/sobre" element={<AboutPage />} />
             <Route path="/equipe" element={<TeamPage />} />
             <Route path="/servicos" element={<Services />} />

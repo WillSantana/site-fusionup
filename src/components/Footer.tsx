@@ -67,7 +67,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 text-[#0066B3] mt-0.5 mr-2 flex-shrink-0" />
-                <span className="text-gray-600">Av. Paulista, 1000, São Paulo - SP</span>
+                <span className="text-gray-600">Rua Araçuai 491 - MG</span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 text-[#0066B3] mr-2 flex-shrink-0" />
@@ -75,7 +75,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 text-[#0066B3] mr-2 flex-shrink-0" />
-                <span className="text-gray-600">contato@socialmedia.com</span>
+                <span className="text-gray-600">contato.fusionup@gmail.com</span>
               </li>
             </ul>
           </div>

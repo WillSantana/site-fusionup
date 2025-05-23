@@ -1,5 +1,16 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Twitter, Facebook, Instagram } from 'lucide-react';
+
+// Define os nomes das redes como tipo literal
+const socialNetworks = ['Twitter', 'Facebook', 'Instagram'] as const;
+type SocialNetwork = typeof socialNetworks[number];
+
+// Mapeia os ícones com tipagem segura
+const socialIcons: Record<SocialNetwork, JSX.Element> = {
+  Twitter: <Twitter className="w-4 h-4" />,
+  Facebook: <Facebook className="w-4 h-4" />,
+  Instagram: <Instagram className="w-4 h-4" />,
+};
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,7 +20,6 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -20,12 +30,12 @@ const Header = () => {
         isScrolled ? 'bg-white shadow-md py-2' : 'bg-[#F0F0F2] py-4'
       }`}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="/" className="text-[#0066B3] font-bold text-2xl">
-          SocialMídia
+      <div className="flex items-center justify-between max-w-7xl mx-auto px-4">
+        <a href="/" className="flex items-center space-x-2">
+          <img src="/images/fusionup.png" alt="Logo" className="h-16 w-auto" />
         </a>
 
-        {/* Desktop Navigation */}
+        {/* Navegação desktop */}
         <nav className="hidden md:flex items-center space-x-8">
           <a href="/" className="text-gray-800 hover:text-[#0066B3] transition-colors">Home</a>
           <div className="relative group">
@@ -38,25 +48,23 @@ const Header = () => {
             </div>
           </div>
           <a href="/servicos" className="text-gray-800 hover:text-[#0066B3] transition-colors">Nossos Serviços</a>
-          <a href="/Blog" className="text-gray-800 hover:text-[#0066B3] transition-colors">Blog</a>
+          <a href="/blog" className="text-gray-800 hover:text-[#0066B3] transition-colors">Blog</a>
           <a href="/contato" className="bg-[#0066B3] text-white px-6 py-2 rounded-md hover:bg-[#004D86] transition-colors">Fale Conosco</a>
         </nav>
 
-        {/* Social Icons */}
+        {/* Ícones sociais desktop */}
         <div className="hidden md:flex items-center space-x-4">
-          {['Twitter', 'Facebook', 'Instagram'].map((network, i) => (
-            <a key={i} href="#" className="text-[#0066B3] hover:text-[#004D86] transition-colors">
+          {socialNetworks.map((network) => (
+            <a key={network} href="#" className="text-[#0066B3] hover:text-[#004D86] transition-colors">
               <div className="w-8 h-8 rounded-full bg-[#E6F0F7] flex items-center justify-center">
                 <span className="sr-only">{network}</span>
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10" />
-                </svg>
+                {socialIcons[network]}
               </div>
             </a>
           ))}
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Botão de menu mobile */}
         <button
           className="md:hidden text-gray-800 hover:text-[#0066B3] transition-colors"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -65,15 +73,13 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Menu mobile */}
       {isMenuOpen && (
         <div className="md:hidden bg-white shadow-lg">
           <div className="px-4 py-3 space-y-3">
             <a href="/" className="block text-gray-800 hover:text-[#0066B3] transition-colors">Home</a>
             <div>
-              <button
-                className="flex items-center w-full text-left text-gray-800 hover:text-[#0066B3] transition-colors"
-              >
+              <button className="flex items-center w-full text-left text-gray-800 hover:text-[#0066B3] transition-colors">
                 Sobre Nós <ChevronDown className="ml-1 h-4 w-4" />
               </button>
               <div className="pl-4 mt-2 space-y-2">
@@ -84,14 +90,13 @@ const Header = () => {
             <a href="/servicos" className="block text-gray-800 hover:text-[#0066B3] transition-colors">Nossos Serviços</a>
             <a href="/blog" className="block text-gray-800 hover:text-[#0066B3] transition-colors">Blog</a>
             <a href="/contato" className="block bg-[#0066B3] text-white px-4 py-2 rounded-md hover:bg-[#004D86] transition-colors text-center">Fale Conosco</a>
+            {/* Ícones sociais mobile */}
             <div className="flex items-center space-x-4 pt-2">
-              {['Twitter', 'Facebook', 'Instagram'].map((network, i) => (
-                <a key={i} href="#" className="text-[#0066B3] hover:text-[#004D86] transition-colors">
+              {socialNetworks.map((network) => (
+                <a key={network} href="#" className="text-[#0066B3] hover:text-[#004D86] transition-colors">
                   <div className="w-8 h-8 rounded-full bg-[#E6F0F7] flex items-center justify-center">
                     <span className="sr-only">{network}</span>
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <circle cx="12" cy="12" r="10" />
-                    </svg>
+                    {socialIcons[network]}
                   </div>
                 </a>
               ))}
