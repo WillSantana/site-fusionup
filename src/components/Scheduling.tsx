@@ -158,6 +158,7 @@ const Scheduling = () => {
             <button
               onClick={handleCloseScheduling}
               className="absolute top-6 right-6 text-white hover:text-gray-200 transition-colors"
+              title="Fechar agendamento"
             >
               <X className="h-6 w-6" />
             </button>

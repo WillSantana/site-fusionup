@@ -1,19 +1,24 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Services from './components/Services';
+import Services from './components/pages/Services';
 import FeaturedProjects from './components/FeaturedProjects';
 import Testimonials from './components/Testimonials';
 import CallToAction from './components/CallToAction';
 import Footer from './components/Footer';
 import Scheduling from './components/Scheduling';
+import BlogPage from "./components/pages/BlogPage";
+import AboutPage from "./components/pages/AboutPage";
+import TeamPage from './components/pages/TeamPage';
+
+
 import './App.css';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simular carregamento inicial
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1500);
@@ -34,18 +39,30 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-grow">
-        <Hero />
-        <Services />
-        <FeaturedProjects />
-        <Testimonials />
-        <CallToAction />
-      </main>
-      <Footer />
-      <Scheduling />
-    </div>
+    <Router>
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={
+              <>
+                <Hero />
+                <Services />
+                <FeaturedProjects />
+                <Testimonials />
+                <CallToAction />
+              </>
+            } />
+            <Route path="/sobre" element={<AboutPage />} />
+            <Route path="/equipe" element={<TeamPage />} />
+            <Route path="/servicos" element={<Services />} />
+            <Route path="/blog" element={<BlogPage />} />
+          </Routes>
+        </main>
+        <Footer />
+        <Scheduling />
+      </div>
+    </Router>
   );
 }
 
