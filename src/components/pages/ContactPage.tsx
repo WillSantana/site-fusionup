@@ -282,7 +282,7 @@ const ContactPage = () => {
             <div className="bg-white rounded-xl shadow-md overflow-hidden">
               <div className="aspect-w-16 aspect-h-9">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0976951624853!2d-46.65390548502164!3d-23.563273284682373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1621436761619!5m2!1spt-BR!2sbr" 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3778.994782296719!2d-44.0422269!3d-19.7659927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa6933fb1c48d17%3A0x77f1a3cf2d3eaa1a!2sR.%20Ara%C3%A7ua%C3%AD%2C%20491%20-%20Sevilha%20B%2C%20Ribeir%C3%A3o%20das%20Neves%20-%20MG%2C%2033840-650!5e0!3m2!1spt-BR!2sbr!4v1716494637049!5m2!1spt-BR!2sbr"
                   width="100%" 
                   height="450" 
                   style={{ border: 0 }} 
